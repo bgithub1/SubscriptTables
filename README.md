@@ -1,9 +1,15 @@
+Since the Gods at Wikipedia say that "pre-alpha" is:  
+
+"Pre-alpha refers to all activities performed during the software project before testing. These activities can include requirements analysis, software design, software development, and unit testing."  
+I guess this is a "pre-alpha" project, since lacks decent unit testing.  However, it has been tested enough to be a good example of what I'm trying to accompllish, and for others to try to use if they want a generalized table UI that connects Java to Meteor.
+
 
 
   GENERAL DESCRIPTION:
   SubscriptTables is a full Meteor project that shows the use of a library of 
-  javascript files called subscriptTablesLib
-  You should put subscriptTablesLib the lib folder of your Meteor project.
+  javascript files called subscriptTablesLib.  SubscriptTables, and it's java companion github repo javaListsInMeteor (https://github.com/bgithub1/javaListsInMeteor), together allow you to send and Receive java.util.lists.  As well, you can subscribe to changes on those lists that take place on the Meteor server.  
+
+  You should put subscriptTablesLib in the lib folder of your Meteor project.
 
   You will then get html tables using Meteor templates that:
   - sort on click
@@ -82,10 +88,13 @@ if(Meteor.isClient){
   allSteps = function(){
     // first create masterTableDef
     var masterTableDefInstance = step1_exampleMasterTableDefClass();
+
     // next send it to Meteor server
     step2_exampleCallToAddAndRemoveMasterTableDef(masterTableDefInstance);
+
     // next create some example data
     var listOfData = step3_exampleTableListCreation();
+
     // finally, send that to Meteor
     step4_exampleWriteOfTableListDataToMeteor(listOfData);
   };
@@ -96,18 +105,22 @@ if(Meteor.isClient){
     // name the table with a name that's like a java class (you can use any name, but if you are
     //  are going to call these methods from java, you will probably use class names)
     var javeLikeClassNameAsTableId = 'misc.Trades';
-    // columns c1, c2 and c3 will be 'groupBy' columns.  Therefore, they don't have totalling arrays
-    //   as the 4th argument to the constructor tableColumnClass
+ 
+    // columns c1, c2 and c3 will be 'groupBy' columns.  Therefore, they don't have totalling
+    //   arrays as the 4th argument to the constructor tableColumnClass
     var c1 = new tableColumnClass('myFirstName','My First Name','myFirstName');
     var c2 = new tableColumnClass('myLastName','My Last Name','myLastName');
     var c3 = new tableColumnClass('shortName','shortName','shortName');
-    // 
-    // columns c4 and c5 are totalling columns.  Each call to their constructor (tableColumnClass)
-    //  has a 4th argument.
-    // for c4, the 4th argument is a 2 element array of columns that make up the weighted average
-    //   price.  The second second element will be summed up and used as the demnominator so
+
+ 
+    // columns c4 and c5 are totalling columns.  
+    // Each call to their constructor (tableColumnClass) has a 4th argument.
+    // For c4, the 4th argument is a 2 element array of columns.
+    //   These columns make up the weighted average price.
+    //   The second second element will be summed up and used as the demnominator so
     //   that the price that will be displayed in myPrice will be the sum of myPrice * myQty / sum(myQty)
     var c4 = new tableColumnClass('myPrice','My Price','myPrice',['myPrice','myQty']);
+    
     // for c5, the 4th argument is just a 1 element array with the value of myQty.
     var c5 = new tableColumnClass('myQty','My Qty','myQty',['myQty']);
 
@@ -115,6 +128,7 @@ if(Meteor.isClient){
     var m1 = new masterTableClass(javeLikeClassNameAsTableId,'My Test Class',
       javeLikeClassNameAsTableId,[c1,c2,c3,c4,c5]);
     var listOfMasterTableInstances = [m1]; // make an array of one element
+
     // make a tableList object and return it
     var javaMasterTableDefListInstance =
       new tableListFromJava(javeLikeClassNameAsTableId,listOfMasterTableInstances);
@@ -123,13 +137,16 @@ if(Meteor.isClient){
 
   step2_exampleCallToAddAndRemoveMasterTableDef = function(tableListFromJavaWithMasterTableDef){
     // assume that you are logged as admin
+    var adminUserName = getLoggedOnUserEmail(); // email address of admin
     var tableId = tableListFromJavaWithMasterTableDef['className'];
+
     //  call meteor to remove the old instance.
-    Meteor.call('removeMasterTable',tableId);
+    Meteor.call('removeMasterTable',adminUserName,tableId);
+
     // call meteor to add the new table.  !!! THE 3RD PARAM IS AN ARRAY B/C
     //   YOU CAN SEND MULTIPLE TABLE DEFINITIONS IN ONE CALL !!!!
     // we are going to add only 1 masterTableDef
-    Meteor.call('addMasterTablesFromJava',tableListFromJavaWithMasterTableDef);
+    Meteor.call('addMasterTableFromJava',adminUserName,tableListFromJavaWithMasterTableDef);
 
   };
 
@@ -146,10 +163,10 @@ if(Meteor.isClient){
 
   step4_exampleWriteOfTableListDataToMeteor = function(tblList){
     // assume that you are logged as admin
-    Meteor.call('addJavaListData',tblList);
+    var adminUserName = getLoggedOnUserEmail(); // email address of admin
+    Meteor.call('addJavaListData',adminUserName,tblList);
 
   };
-
 
 
 
