@@ -1,0 +1,167 @@
+/* CSS declarations go here */
+
+@table-head-hover: #F2F2F2;
+@table-body-hover: #F2F2F2;
+@table-remove-hover: #F2DADA;
+@gray-font: #B9B9B9;
+@border-radius: 5px;
+@semi-translucent: rgba(255,255,255,0.8);
+@box-shadow: 4px 4px 12px 1px rgba(100, 100, 100, .3);
+@lt-blue: #D5DFF2;
+@lt-blue-transparent: rgba(0,16,89,0.7);
+@bootstrap-lt-gray: #ffffff;
+@bootstrap-dark-gray: #e6e6e6;
+
+body {
+	background: url("/imgs/noisy_grid.png");   // credit to Vectorpile @ subtlepatterns.com 
+}
+
+#content_area {
+}
+
+// utility CSS classes that can be used anywhere
+.center {
+	float: none; 
+	margin-left: auto; 
+	margin-right: auto;
+	text-align: center;
+}
+
+.gray {
+	color: @gray-font;
+}
+
+.row-spacer-small {
+	margin-top: 10px;
+}
+
+.row-spacer {
+	margin-top: 30px;
+}
+
+.row-spacer-large {
+	margin-top: 50px;
+}
+
+td.num-data {
+	text-align: right;
+}
+
+.logo h5 {
+	font-family: 'Quattrocento Sans', sans-serif;
+}
+
+// login page CSS
+.main-logo {
+	font-family: 'Quattrocento Sans', sans-serif;
+	font-size: 62px;
+	margin-left: auto; 
+	margin-right: auto;
+	text-align: center;
+	margin-top: 100px;
+}
+
+.container-login {
+	background-color: @semi-translucent;	
+	width: 520px;
+	// height: 240px;
+	height: auto;
+	float: none; 
+	margin-top: 100px;
+	margin-left: auto; 
+	margin-right: auto;
+	padding-top: 0;
+	padding-bottom: 20px;
+	text-align: center;
+	-webkit-box-shadow: @box-shadow;
+	box-shadow: @box-shadow;
+	-webkit-border-radius: @border-radius;
+	border-radius: @border-radius;
+}
+
+.nav-bottom {
+	position: absolute;
+	bottom: 20px;
+	width: 100%;
+	z-index: 1;
+}
+
+.inline-list {
+	margin-bottom: 0px;
+}
+
+.inline-list li {
+	margin-left: 6px;
+	margin-right: 6px;
+}
+
+.inline-list li a, .inline-list li {
+	display: inline;
+}
+
+// main dashboard CSS
+
+.user-name {
+	margin: 5px 100px 0 0;
+}
+
+.main-nav {
+	background-color: @semi-translucent;
+	// background-color:rgba(0,0,0,0.9);
+	margin-left: 0;
+	padding-top: 20px;
+	padding-left: 20px;
+	padding-right: 20px;
+	height: 100%;
+	border-right: @gray-font dotted 1px;
+}
+
+.main-nav .row {
+	margin-left: 0px;
+}
+
+.content-frame {
+	background-color: @semi-translucent;	
+	margin: 20px 20px 20px 20px;
+	padding: 20px 30px 20px 30px;
+	-webkit-box-shadow: @box-shadow;
+	box-shadow: @box-shadow;
+	-webkit-border-radius: @border-radius;
+	border-radius: @border-radius;
+}
+
+.content-frame div.row {
+	margin-left: 0;
+}
+
+.content-frame .table {
+	margin-top: 15px;
+}
+
+// table CSS
+.table {
+	-webkit-border-radius: @border-radius;
+	border-radius: @border-radius;
+}
+
+.table thead {
+	background-image: -moz-linear-gradient(top, @bootstrap-lt-gray, @bootstrap-dark-gray);
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(@bootstrap-lt-gray), to(@bootstrap-dark-gray));
+	background-image: -webkit-linear-gradient(top, @bootstrap-lt-gray, @bootstrap-dark-gray);
+	background-image: -o-linear-gradient(top, @bootstrap-lt-gray, @bootstrap-dark-gray);
+	background-image: linear-gradient(to bottom, @bootstrap-lt-gray, @bootstrap-dark-gray);
+}
+
+.table-highlight thead tr td:hover, .table-highlight tbody tr td:hover {
+	background-color: @table-body-hover;
+}
+
+.table-highlight tbody tr td.remove_pos_btn:hover {
+	background-color: @table-remove-hover;
+}
+
+.table .text_box, .table select {
+	margin-left: 5px;
+	margin-right: 5px;
+	width: 85%;
+}
