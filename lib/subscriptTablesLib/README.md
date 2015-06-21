@@ -151,9 +151,10 @@ if(Meteor.isClient){
   };
 
 
-
-
 }
+
+`````
+
 
 /*   GENERAL DESCRIPTION:
   subscriptTablesLib is a folder that you can add to the lib folder of your Meteor project, to get html tables using Meteor templates that:
@@ -195,4 +196,3 @@ if(Meteor.isClient){
   user2@demo.com  pass=user2pass
 
 */
-`````
