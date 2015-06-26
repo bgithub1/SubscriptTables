@@ -41,10 +41,17 @@
 				{{#each tableColsWithDescriptors}}
 				<td><div class="text-center toggleSort">{{tableColDescriptor.colName}}</div></td>
 				{{/each}}
-
+				<td><div class="text-center toggleSort">rem/ins</div></td>
 			</tr>
 		</thead>
 		<tbody>
+			<tr>
+				{{#each tableColsWithDescriptors}}
+					<td contenteditable='true'></td>
+				{{/each}}
+				<input class="insertButton" type="button" value="insert"/>
+			</tr>
+
 			{{#each tableRows}}
 				{{> rowTemplate}}
 			{{/each}}
@@ -58,6 +65,7 @@
 		{{#each tableFields}}
 			<td><div class="{{fieldAlignmentClass}}">{{tableField}}</div></td>
 		{{/each}}
+		<input class="deleteButton" type="button" value="remove"/>
 	</tr>
 </template>
 
@@ -84,3 +92,16 @@
 	</div>
 </template>
 
+<!--
+<template name="insertBookForm_1">
+	<div class="span9 offset2 content-frame" id="content_area">
+  		{{> quickForm collection="Books" id="insertBookForm"  type="insert"}}
+  	</div>
+</template>
+-->
+
+<template name="user_position_input">
+	<div class="row-fluid">
+		<h3 class="pull-left">Position Input</h3>
+	</div>
+</template>

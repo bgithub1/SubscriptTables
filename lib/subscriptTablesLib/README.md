@@ -47,7 +47,6 @@
 
 `````javascript
 
-// sometimes an example tells a million words:
 
 /* 
   The following shows example client-side javascript code that shows 
@@ -155,44 +154,3 @@ if(Meteor.isClient){
 
 `````
 
-
-/*   GENERAL DESCRIPTION:
-  subscriptTablesLib is a folder that you can add to the lib folder of your Meteor project, to get html tables using Meteor templates that:
-  - sort on click
-  - filter on click
-  - hide/show columns on click
-  - perform totalling (simple and weighted-average) automatically as you sort filter and hide/show.
-
-
-      USING THE PROJECT WITH JAVA:
-  If you use the companion Java project/jar java-lists-in-meteor, you can upload/download and subscribe to java.util.List<T> items, as well as upload/download new TableModels and ColumnModels that
-  define which member variables of class T get shown, and how those columns get totalled.
-
-  java-lists-in-meteor makes it easy to control what data the user sees and how they see it from java.  It also is a nice MVC-like GUI for your java.util.List<T> instances.  
-
-  Important:  Currently, java-lists-in-meteor supports rather "flat" generic objects.  However, it is very common for developers to create "adaptor" classes in java to display data in GUI packages like Swing.  
-
-  Future versions will allow you to specify more complicate json accessors so that you can your java classes can be more hierarchical.
-
-      HOW ARE RECORDS STORED?
-  All TableModels are stored in the Meteor mongo collection db.masterTableDefs, which both the client and the server can access.
-  Data to populate these tables is stored in Meteor mongo collections whose name coincides with the full java class name of the json-serialized java objects that you send to Meteor via Meteor method calls.
-
-  See the Meteor.methods section of serverDefs.js for all of the Meteor methods that you can call from either javacript or java (using java-lists-in-meteor.jar);
-
-      ANY DDP CLIENT CALLING THESE METEOR METHODS MUST BE LOGGED IN TO METEOR:
-  IMPORTANT !!!! THE JAVASCRIPT CODE IN subscriptTablesLib (and the java ddp client in java-lists-in-meteor) assumes that users have logged in to Meteor and that Meteor.userId is not null.  See the Meteor.methods section of serverDefs.js to see how the userId gets used in each Meteor method call.
-
-      TO UPDATE OR ADD RECORDS, YOU MUST LOG IN AS THE ADMIN USER (WHATEVER YOU HAVE MADE IT):
-  Generally, Meteor methods that add, remove or update masterTableDefs (MeteorTableModels in java)  or any data collection must
-  be called while the admin user is logged in as a client.
-  
-      TO READ OR SUBSCRIBE TO DATA, YOU LOG IN AS ANY USER:
-  The data that gets returned will be records that have field named 'userId' whose value is equal to the email address of the currently logged in user that is making the Meteor method
-  call, or, all records that either don't have a 'userId' field, or wholse 'userId' field = "".
-
-  Example users that are in example project
-  user1@demo.com  pass=user1pass
-  user2@demo.com  pass=user2pass
-
-*/
