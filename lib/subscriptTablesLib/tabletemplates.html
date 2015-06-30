@@ -73,7 +73,7 @@
 				{{/each}}
 
 				<div>
-					<button id="insertButtonId" class="btn btn-sm insertButton" disabled="{{tableInsertDisabledState}}">insert</button>
+					<button id="insertButtonId" class="btn {{#if tableInsertDisabledState}}btn-sm{{else}}btn-success{{/if}} insertButton" disabled="{{tableInsertDisabledState}}">insert</button>
 				</div>
 			</tr>
 
@@ -88,13 +88,21 @@
 <template name="rowTemplate">
 	<tr table-striped>
 		{{#each tableFields}}
-			<td><div class="{{fieldAlignmentClass}}">{{tableField}}</div></td>
+				<td><div class="{{fieldAlignmentClass}}">{{tableField}}</div></td>
 		{{/each}}
-				<div>
-					<button class="btn btn-danger deleteButton">remove</button>
-				</div>
-		<!--<input class="deleteButton" type="button" value="remove"/>-->
+
+		{{#unless tableAggregationMode}}
+			<div>
+				<button class="btn btn-danger deleteButton">remove</button>
+			</div>
+		{{/unless}}
+
 	</tr>
+</template>
+
+<template name="myModal">
+  <h3>Modal Dialog</h3>
+  <p>this is a modal dialog</p>
 </template>
 
 <template name="fieldTemplate">
