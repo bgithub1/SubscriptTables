@@ -45,11 +45,36 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr>
-				{{#each tableColsWithDescriptors}}
-					<td contenteditable='true'></td>
+			<tr><!-- {'colName':col,'mongoName':this[mongoId_fid],'value':currChoice,'possChoices':possChoices_2,'useSelectAsInput':useSelectAsInput,'editable':editable};-->
+				{{#each tableInputColsWithDescriptors}}
+					{{#if editable}}
+						{{#if useSelectAsInput}}
+							<td>
+								<div class="dropdown">
+								  <button class="btn btn-info dropdown-toggle" type="button" data-toggle="dropdown">{{value}}
+								  <span class="caret"></span></button>
+								  <ul class="dropdown-menu">
+								  	{{#each possChoices}}
+										<li><a class="poss-choice" href="#">{{this.choice}}</a></li>
+								  	{{/each}}
+								  </ul>
+								</div>
+							</td>						
+						{{else}}
+<!--
+							<td><input id="{{freeFieldId}}" class="text-center freeField" type="text"></td>
+							<td><input id="{{freeFieldId}}" class="text-box freeField" type="text" value="{{value}}"></td>
+-->
+							<td><div id="{{freeFieldId}}" class="text-center freeField" contenteditable='{{editable}}'></div></td>
+						{{/if}}
+					{{else}}
+						<td contenteditable='false'></td>
+					{{/if}}
 				{{/each}}
-				<input class="insertButton" type="button" value="insert"/>
+
+				<div>
+					<button id="insertButtonId" class="btn btn-sm insertButton" disabled="{{tableInsertDisabledState}}">insert</button>
+				</div>
 			</tr>
 
 			{{#each tableRows}}
@@ -65,7 +90,10 @@
 		{{#each tableFields}}
 			<td><div class="{{fieldAlignmentClass}}">{{tableField}}</div></td>
 		{{/each}}
-		<input class="deleteButton" type="button" value="remove"/>
+				<div>
+					<button class="btn btn-danger deleteButton">remove</button>
+				</div>
+		<!--<input class="deleteButton" type="button" value="remove"/>-->
 	</tr>
 </template>
 
