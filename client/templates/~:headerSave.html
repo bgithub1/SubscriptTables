@@ -23,3 +23,16 @@
   </header>
 </template>
 
+<template name="view_control">
+
+    <div class="dropdown span4">
+      <button class="btn btn-info dropdown-toggle" type="button" data-toggle="dropdown">Select a Table To View
+      <span class="caret"></span></button>
+      <ul class="dropdown-menu">
+        {{#each tables}}
+          <li><a class="poss-choice viewControl" id="{{tableId}}_btn" href="#">{{displayTableName}}</a></li>
+        {{/each}}
+      </ul>
+    </div>
+
+</template>

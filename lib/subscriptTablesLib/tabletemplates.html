@@ -42,6 +42,7 @@
 						</div>
 					</div>
 				</div>				
+				<!-- The footerData row below is in the footer of the top part of  the table, NOT at the bottom of the entire table. -->
 				<div class="row-fluid">
 					<div class="span9 bootstrapRowMargin">
 						{{footerData}}
@@ -95,6 +96,10 @@
 			{{#each tableRows}}
 				{{> rowTemplate}}
 			{{/each}}
+			{{#each totalData}}
+				{{> rowTemplate}}
+			{{/each}}
+			
 		</tbody>
 	</table>
 <!--</div>-->
@@ -114,6 +119,7 @@
 
 	</tr>
 </template>
+
 
 <template name="myModal">
   <h3>Modal Dialog</h3>
