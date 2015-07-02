@@ -111,7 +111,7 @@ td.num-data {
 	margin-left: 0;
 	padding-top: 20px;
 	padding-left: 20px;
-	padding-right: 20px;
+	padding-right:20px;
 	height: 100%;
 	border-right: @gray-font dotted 1px;
 }
@@ -124,6 +124,17 @@ td.num-data {
 	background-color: @semi-translucent;	
 	margin: 20px 20px 20px 20px;
 	padding: 20px 30px 20px 30px;
+	-webkit-box-shadow: @box-shadow;
+	box-shadow: @box-shadow;
+	-webkit-border-radius: @border-radius;
+	border-radius: @border-radius;
+}
+
+
+.content-frame-backup {
+	background-color: @semi-translucent;	
+	margin: 1px 1px 20px 20px;
+	padding: 5px 5px 20px 30px;
 	-webkit-box-shadow: @box-shadow;
 	box-shadow: @box-shadow;
 	-webkit-border-radius: @border-radius;
@@ -193,4 +204,17 @@ td.num-data {
 [contenteditable="true"].freeField * {
     display:inline;
     white-space:nowrap;
+}
+
+.bootstrapRowMargin{
+	margin:1px;
+	margin-top:1px; 
+	margin-bottom:1px; 
+}
+.table-scrollable{
+    overflow:hidden;
+}
+
+.myOverflow{
+	overflow:auto;
 }

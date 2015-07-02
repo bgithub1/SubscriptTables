@@ -1,41 +1,56 @@
 <template name="tablesTemplate">
-	<div class="row-fluid base-row">
-		<div class="span2 affix main-nav" id="view_control_bar">
-			{{> view_control}}
+	<!--<div class="row-fluid base-row">-->
+	<div class="container-fluid base-row">
+		<div class="row-fluid">
+			<!--<div class="span2 affix main-nav" id="view_control_bar">-->
+<!--
+			<div class="span2  main-nav" id="view_control_bar">
+				{{> view_control}}
+			</div>
+-->
+			<div class="span12   myOverflow" id="content_area">
+				{{#each tables}}
+					<div class="content-frame   myOverflow">
+						{{> tableTemplate}}
+					</div>
+				{{/each}}
+				{{finishedAllTables}}
+			</div>
 		</div>
-		{{#each tables}}
-			{{> tableTemplate}}
-		{{/each}}
-		{{finishedAllTables}}
 	</div>
 </template>
 
 <template name="tableTemplate">
-<div class="span9 offset2 content-frame" id="content_area">
-<!--<div class="span12">-->
-				<div class="row">
-				<h4 class="span9">{{displayTableName}} Table</h4>
+<!--<div class="span9 offset2 content-frame  myOverflow" id="content_area">-->
+
+				<div class="row-fluid">
+					<h5 class="span9 bootstrapRowMargin">{{displayTableName}} Table</h5>
 				</div>
-				<div class="span4 pull-left">
-					<div>
-						<input class="aggregateToggleButton" type="button" value="Agg/NoAgg"/>
-						<input class="updateFilterButton" type="button" value="Filter"/>
-						<input class="clearFilterButton" type="button" value="Clear"/>
+				<div class="row-fluid bootstrapRowMargin">
+					<div class="span4 pull-left">
+						<div>
+							<input class="aggregateToggleButton" type="button" value="Agg/NoAgg"/>
+							<input class="updateFilterButton" type="button" value="Filter"/>
+							<input class="clearFilterButton" type="button" value="Clear"/>
+						</div>
+					</div>
+					<div class="span5 pull-right">
+						<div>
+							{{#each tableColDescriptors}}
+								<input style="{{tableColDescriptor.buttonColor}}" class="hideShowCol" type="button" value="{{tableColDescriptor.colName}}"/>
+							{{/each}}
+						</div>
+					</div>
+				</div>				
+				<div class="row-fluid">
+					<div class="span9 bootstrapRowMargin">
+						{{footerData}}
 					</div>
 				</div>
-				<div class="span5 pull-right">
-					<div>
-						{{#each tableColDescriptors}}
-							<input style="{{tableColDescriptor.buttonColor}}" class="hideShowCol" type="button" value="{{tableColDescriptor.colName}}"/>
-						{{/each}}
-					</div>
-				</div>
-				
-				<div class="span9">
-					{{footerData}}
-				</div>
-			
-	<table class="table table-bordered table-striped table-condensed table-highlight">
+<!--			
+	<table class="table table-bordered table-striped table-condensed table-highlight table-responsive">
+-->
+	<table class="table bootstrapRowMargin table-bordered table-striped table-condensed table-highlight table-scrollable">
 		<thead>
 			<tr>
 				{{#each tableColsWithDescriptors}}
@@ -82,7 +97,7 @@
 			{{/each}}
 		</tbody>
 	</table>
-</div>
+<!--</div>-->
 </template>
 
 <template name="rowTemplate">
@@ -110,6 +125,22 @@
 </template>
 
 <template name="view_control">
+
+    <div class="dropdown span4">
+      <button class="btn btn-info dropdown-toggle" type="button" data-toggle="dropdown">Select a Table To View
+      <span class="caret"></span></button>
+      <ul class="dropdown-menu">
+        {{#each tables}}
+          <li><a class="poss-choice viewControl" id="{{tableId}}_btn" href="#">{{displayTableName}}</a></li>
+        {{/each}}
+      </ul>
+    </div>
+
+</template>
+
+
+<!--
+<template name="view_control">
 	<div class="row-fluid">
 		<div class="logo center">
 			<h5>SubscriptTables</h5>
@@ -127,6 +158,7 @@
 		<button class="btn btn-block" id="log_out_btn">Log Out</button>
 	</div>
 </template>
+-->
 
 <!--
 <template name="insertBookForm_1">
