@@ -61,7 +61,9 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr><!-- {'colName':col,'mongoName':this[mongoId_fid],'value':currChoice,'possChoices':possChoices_2,'useSelectAsInput':useSelectAsInput,'editable':editable};-->
+			<tr>
+				<!-- this= {'colName':col,'mongoName':this[mongoId_fid],'value':currChoice,'possChoices':possChoices_2,'useSelectAsInput':useSelectAsInput,'editable':editable};
+				-->
 				{{#each tableInputColsWithDescriptors}}
 					{{#if editable}}
 						{{#if useSelectAsInput}}
@@ -77,10 +79,6 @@
 								</div>
 							</td>						
 						{{else}}
-<!--
-							<td><input id="{{freeFieldId}}" class="text-center freeField" type="text"></td>
-							<td><input id="{{freeFieldId}}" class="text-box freeField" type="text" value="{{value}}"></td>
--->
 							<td><div id="{{freeFieldId}}" class="text-center freeField" contenteditable='{{editable}}'></div></td>
 						{{/if}}
 					{{else}}
@@ -92,11 +90,13 @@
 					<button id="insertButtonId" class="btn {{#if tableInsertDisabledState}}btn-sm{{else}}btn-success{{/if}} insertButton" disabled="{{tableInsertDisabledState}}">insert</button>
 				</div>
 			</tr>
-
-			{{#each tableRows}}
-				{{> rowTemplate}}
-			{{/each}}
+			<!-- First, show table totals -->
 			{{#each totalData}}
+				{{> totalRowTemplate}}
+			{{/each}}
+
+			<!-- Then, show table data -->
+			{{#each tableRows}}
 				{{> rowTemplate}}
 			{{/each}}
 			
@@ -120,6 +120,17 @@
 	</tr>
 </template>
 
+<template name="totalRowTemplate">
+	<tr table-striped>
+		{{#each tableFields}}
+				<td><div class="text-right">{{tableField}}</div></td>
+		{{/each}}
+		
+		<td><div class="text-center">TOTALS</div></td>
+
+	</tr>
+</template>
+
 
 <template name="myModal">
   <h3>Modal Dialog</h3>
@@ -131,17 +142,17 @@
 </template>
 
 <template name="view_control">
-
-    <div class="dropdown span4">
-      <button class="btn btn-info dropdown-toggle" type="button" data-toggle="dropdown">Select a Table To View
-      <span class="caret"></span></button>
-      <ul class="dropdown-menu">
-        {{#each tables}}
-          <li><a class="poss-choice viewControl" id="{{tableId}}_btn" href="#">{{displayTableName}}</a></li>
-        {{/each}}
-      </ul>
-    </div>
-
+	{{#if isLoggedOn}}
+	    <div class="dropdown span4">
+	      <button class="btn btn-info dropdown-toggle" type="button" data-toggle="dropdown">Select a Table To View
+	      <span class="caret"></span></button>
+	      <ul class="dropdown-menu">
+	        {{#each tables}}
+	          <li><a class="poss-choice viewControl" id="{{tableId}}_btn" href="#">{{displayTableName}}</a></li>
+	        {{/each}}
+	      </ul>
+	    </div>
+	 {{/if}}
 </template>
 
 
