@@ -2,12 +2,6 @@
 	<!--<div class="row-fluid base-row">-->
 	<div class="container-fluid base-row">
 		<div class="row-fluid">
-			<!--<div class="span2 affix main-nav" id="view_control_bar">-->
-<!--
-			<div class="span2  main-nav" id="view_control_bar">
-				{{> view_control}}
-			</div>
--->
 			<div class="span12   myOverflow" id="content_area">
 				{{#each tables}}
 					<div class="content-frame   myOverflow">
@@ -21,8 +15,6 @@
 </template>
 
 <template name="tableTemplate">
-<!--<div class="span9 offset2 content-frame  myOverflow" id="content_area">-->
-
 				<div class="row-fluid">
 					<h5 class="span9 bootstrapRowMargin">{{displayTableName}} Table</h5>
 				</div>
@@ -48,9 +40,6 @@
 						{{footerData}}
 					</div>
 				</div>
-<!--			
-	<table class="table table-bordered table-striped table-condensed table-highlight table-responsive">
--->
 	<table class="table bootstrapRowMargin table-bordered table-striped table-condensed table-highlight table-scrollable">
 		<thead>
 			<tr>
@@ -61,35 +50,37 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr>
-				<!-- this= {'colName':col,'mongoName':this[mongoId_fid],'value':currChoice,'possChoices':possChoices_2,'useSelectAsInput':useSelectAsInput,'editable':editable};
-				-->
-				{{#each tableInputColsWithDescriptors}}
-					{{#if editable}}
-						{{#if useSelectAsInput}}
-							<td>
-								<div class="dropdown">
-								  <button class="btn btn-info dropdown-toggle" type="button" data-toggle="dropdown">{{value}}
-								  <span class="caret"></span></button>
-								  <ul class="dropdown-menu">
-								  	{{#each possChoices}}
-										<li><a class="poss-choice" href="#">{{this.choice}}</a></li>
-								  	{{/each}}
-								  </ul>
-								</div>
-							</td>						
+			{{#if hasValidator}}
+				<tr>
+					<!-- this= {'colName':col,'mongoName':this[mongoId_fid],'value':currChoice,'possChoices':possChoices_2,'useSelectAsInput':useSelectAsInput,'editable':editable};
+					-->
+					{{#each tableInputColsWithDescriptors}}
+						{{#if editable}}
+							{{#if useSelectAsInput}}
+								<td>
+									<div class="dropdown">
+									  <button class="btn btn-info dropdown-toggle" type="button" data-toggle="dropdown">{{value}}
+									  <span class="caret"></span></button>
+									  <ul class="dropdown-menu">
+									  	{{#each possChoices}}
+											<li><a class="poss-choice" href="#">{{this.choice}}</a></li>
+									  	{{/each}}
+									  </ul>
+									</div>
+								</td>						
+							{{else}}
+								<td><div id="{{freeFieldId}}" class="text-center freeField" contenteditable='{{editable}}'></div></td>
+							{{/if}}
 						{{else}}
-							<td><div id="{{freeFieldId}}" class="text-center freeField" contenteditable='{{editable}}'></div></td>
+							<td contenteditable='false'></td>
 						{{/if}}
-					{{else}}
-						<td contenteditable='false'></td>
-					{{/if}}
-				{{/each}}
+					{{/each}}
 
-				<div>
-					<button id="insertButtonId" class="btn {{#if tableInsertDisabledState}}btn-sm{{else}}btn-success{{/if}} insertButton" disabled="{{tableInsertDisabledState}}">insert</button>
-				</div>
-			</tr>
+					<div>
+						<button id="insertButtonId" class="btn {{#if tableInsertDisabledState}}btn-sm{{else}}btn-success{{/if}} insertButton" disabled="{{tableInsertDisabledState}}">insert</button>
+					</div>
+				</tr>
+			{{/if}}
 			<!-- First, show table totals -->
 			{{#each totalData}}
 				{{> totalRowTemplate}}
@@ -102,7 +93,6 @@
 			
 		</tbody>
 	</table>
-<!--</div>-->
 </template>
 
 <template name="rowTemplate">
