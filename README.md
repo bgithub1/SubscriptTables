@@ -1,9 +1,3 @@
-Since the Gods at Wikipedia say that "pre-alpha" is:  
-
-"Pre-alpha refers to all activities performed during the software project before testing. These activities can include requirements analysis, software design, software development, and unit testing."  
-I guess this is a "pre-alpha" project, since lacks decent unit testing.  However, it has been tested enough to be a good example of what I'm trying to accompllish, and for others to try to use if they want a generalized table UI that connects Java to Meteor.
-
-
 
   GENERAL DESCRIPTION:
   SubscriptTables is a full Meteor project that shows the use of a library of 
