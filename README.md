@@ -1,3 +1,23 @@
+Getting Started:
+
+````
+# in a terminal session
+mkdir mydir  # create a directory to put everything in (i called it "mydir")
+cd mydir  
+git clone https://github.com/bgithub1/SubscriptTables.git
+git clone https://github.com/bgithub1/javaListsInMeteor.git
+
+cd SubscriptTables  #navigate to meteor project folder
+meteor  # start up meteor
+
+#hit cntrl-t to start another terminal session
+# in another terminal session
+cd ../  # cd back up to mydir
+cd javaListsInMeteor/java-lists-in-meteor
+sh runall.sh  # run a bunch of examples
+
+# look at the rest of both repos to see code examples
+````
 
   GENERAL DESCRIPTION:
   SubscriptTables is a full Meteor project that shows the use of a library of 
