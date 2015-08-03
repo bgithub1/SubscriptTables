@@ -2,19 +2,27 @@ Getting Started:
 
 ````
 # in a terminal session
-mkdir mydir  # create a directory to put everything in (i called it "mydir")
+# ************ First: clone 2 projects **********************
+mkdir mydir  # create a directory to put everything in (I called it "mydir")
 cd mydir  
 git clone https://github.com/bgithub1/SubscriptTables.git
 git clone https://github.com/bgithub1/javaListsInMeteor.git
 
+# ************ Second: start up meteor **********************
 cd SubscriptTables  #navigate to meteor project folder
 meteor  # start up meteor
 
+# ************ Third: do maven build of javaListsInMeteor **********************
 #hit cntrl-t to start another terminal session
 # in another terminal session
+echo "MAKE SURE MAVEN IS INSTALLED, AND THAT THE mvn COMMAND WORKS"
 cd ../  # cd back up to mydir
-cd javaListsInMeteor/java-lists-in-meteor
-sh runAll.sh  # run a bunch of examples
+cd javaListsInMeteor
+mvn clean install -U
+
+# ************ Fourth: run examples in java-lists-in-meteor **********************
+cd java-lists-in-meteor
+sh runExamples.sh  # run a bunch of examples
 
 # look at the rest of both repos to see code examples
 ````
