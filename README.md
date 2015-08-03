@@ -14,7 +14,7 @@ meteor  # start up meteor
 # in another terminal session
 cd ../  # cd back up to mydir
 cd javaListsInMeteor/java-lists-in-meteor
-sh runall.sh  # run a bunch of examples
+sh runAll.sh  # run a bunch of examples
 
 # look at the rest of both repos to see code examples
 ````
