@@ -1,0 +1,32 @@
+<template name="simpleCsv">
+	<div class="row-fluid">
+		<h5 class="span9 bootstrapRowMargin">{{displayTableName}} Table</h5>
+		<input class="recCalcAllButton" type="button" value="Recalculate All"/>
+	</div>
+	
+	<table class="table bootstrapRowMargin table-bordered table-striped table-condensed table-highlight table-scrollable">
+		<thead>
+			<tr>
+				{{#each headerCols}}
+					<td><div class="text-center toggleSort">{{this}}</div></td>
+				{{/each}}
+			</tr>
+		</thead>
+		<tbody>
+
+			{{#each tableRows}}
+				{{> simpleRowTemplate}}
+			{{/each}}
+			
+		</tbody>
+	</table>
+
+</template>
+
+<template name="simpleRowTemplate">
+	<tr table-striped>
+		{{#each tableFields}}
+				<td><div class="{{fieldAlignmentClass}}">{{tableField}}</div></td>
+		{{/each}}
+	</tr>
+</template>

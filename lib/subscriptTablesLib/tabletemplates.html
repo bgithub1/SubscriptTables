@@ -4,15 +4,34 @@
 		<div class="row-fluid">
 			<div class="span12   myOverflow" id="content_area">
 				{{#each tables}}
+					{{> templateChooser}}
+<!--
 					<div class="content-frame   myOverflow">
-						{{> tableTemplate}}
+						{{#if this.tableIsSimpleCsv}}
+							{{> simpleCsv}}
+						{{else}}
+							{{> tableTemplate}}
+						{{/if}}
 					</div>
+-->
 				{{/each}}
 				{{finishedAllTables}}
 			</div>
 		</div>
 	</div>
 </template>
+
+
+<template name="templateChooser">
+		<div class="content-frame   myOverflow">
+			{{#if tableIsSimpleCsv}}
+				{{> simpleCsv}}
+			{{else}}
+				{{> tableTemplate}}
+			{{/if}}
+		</div>
+</template>
+
 
 <template name="tableTemplate">
 				<div class="row-fluid">
@@ -147,37 +166,13 @@
 </template>
 
 
-<!--
-<template name="view_control">
-	<div class="row-fluid">
-		<div class="logo center">
-			<h5>SubscriptTables</h5>
-			<h4>Powered By LiveRisk</h4>
-		</div>
-	</div>
-	<div class="row-fluid row-spacer"></div>
-	<div class="row-fluid">
-		{{#each tables}}
-			<button class="btn btn-block active viewControl" id="{{tableId}}_btn" data-toggle="button">{{displayTableName}}</button>
-		{{/each}}
-	</div>
-	<div class="row-fluid row-spacer-large"></div>
-	<div class="row-fluid">
-		<button class="btn btn-block" id="log_out_btn">Log Out</button>
-	</div>
-</template>
--->
-
-<!--
-<template name="insertBookForm_1">
-	<div class="span9 offset2 content-frame" id="content_area">
-  		{{> quickForm collection="Books" id="insertBookForm"  type="insert"}}
-  	</div>
-</template>
--->
 
 <template name="user_position_input">
 	<div class="row-fluid">
 		<h3 class="pull-left">Position Input</h3>
 	</div>
 </template>
+
+
+
+
