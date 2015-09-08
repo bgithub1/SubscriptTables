@@ -186,3 +186,8 @@
     overflow: visible !important;
   }
 }
+
+.myRounded{
+  border-radius: 15px;
+}
+

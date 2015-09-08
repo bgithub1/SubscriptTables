@@ -1,7 +1,8 @@
 <template name="tablesTemplate">
-	<!--<div class="row-fluid base-row">-->
-	<div class="container-fluid base-row">
+	<!--<div class="container-fluid base-row">-->
+	<div class="container-fluid">
 		<div class="row-fluid">
+			<h6>.</h6>
 			<div class="span12   myOverflow" id="content_area">
 				{{#each tables}}
 					{{> templateChooser}}
@@ -36,20 +37,20 @@
 <template name="tableTemplate">
 				<div class="row-fluid">
 					<h5 class="span9 bootstrapRowMargin">{{displayTableName}} Table</h5>
-					<input class="recCalcAllButton" type="button" value="Recalculate All"/>
+					<input class="recCalcAllButton myRounded" style="background-color:#F6F8F8" type="button" value="Recalculate All"/>
 				</div>
 				<div class="row-fluid bootstrapRowMargin">
 					<div class="span4 pull-left">
 						<div>
-							<input class="aggregateToggleButton" type="button" value="Agg/NoAgg"/>
-							<input class="updateFilterButton" type="button" value="Filter"/>
-							<input class="clearFilterButton" type="button" value="Clear"/>
+							<input class="aggregateToggleButton myRounded"  style="background-color:#F6F8F8" type="button" value="Agg/NoAgg"/>
+							<input class="updateFilterButton myRounded"  style="background-color:#F6F8F8" type="button" value="Filter"/>
+							<input class="clearFilterButton myRounded"  style="background-color:#F6F8F8" type="button" value="Clear"/>
 						</div>
 					</div>
 					<div class="span5 pull-right">
 						<div>
 							{{#each tableColDescriptors}}
-								<input style="{{tableColDescriptor.buttonColor}}" class="hideShowCol" type="button" value="{{tableColDescriptor.colName}}"/>
+								<input style="{{tableColDescriptor.buttonColor}}" class="hideShowCol myRounded" type="button" value="{{tableColDescriptor.colName}}"/>
 							{{/each}}
 						</div>
 					</div>
@@ -89,7 +90,14 @@
 									</div>
 								</td>						
 							{{else}}
+<!--
 								<td><div id="{{freeFieldId}}" class="text-center freeField" contenteditable='{{editable}}'></div></td>
+-->
+								<td>
+									<div id="{{freeFieldId}}" class="text-center freeField" contenteditable='{{editable}}'>
+									</div>
+								</td>
+								
 							{{/if}}
 						{{else}}
 							<td contenteditable='false'></td>
@@ -154,8 +162,9 @@
 <template name="view_control">
 	{{#if isLoggedOn}}
 	    <div class="dropdown span4">
-	      <button class="btn btn-info dropdown-toggle" type="button" data-toggle="dropdown">Select a Table To View
-	      <span class="caret"></span></button>
+	      	<button class="btn btn-info dropdown-toggle" type="button" data-toggle="dropdown">Select a Table To View
+	      		<span class="caret"></span>
+	  		</button>
 	      <ul class="dropdown-menu">
 	        {{#each tables}}
 	          <li><a class="poss-choice viewControl" id="{{tableId}}_btn" href="#">{{displayTableName}}</a></li>
