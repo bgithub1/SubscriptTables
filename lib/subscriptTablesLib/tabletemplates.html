@@ -92,7 +92,11 @@
 							{{else}}
 
 								<td>
+									{{> freeFieldDivTemplate this}}
+									<!-- 
 									<div id="{{freeFieldId}}" class="text-center freeField" contenteditable='{{editable}}'>{{freeFieldValue}}</div>
+									-->	
+								
 								</td>
 								
 							{{/if}}
@@ -119,6 +123,11 @@
 		</tbody>
 	</table>
 </template>
+
+<template name="freeFieldDivTemplate">
+	<div id="{{freeFieldId}}" class="text-center freeFieldDiv" contenteditable='{{editable}}'></div>
+</template>
+
 
 <template name="rowTemplate">
 	<tr table-striped>
